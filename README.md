@@ -80,3 +80,5 @@ https://www.goodreads.com/
 https://anthillsocial.github.io/example-student-projects/public/MA2806-DataVisualisation/MA2806-2023-%E2%80%94-SetJetting/index.html
 https://doaj.org/article/bafe686f54fd438782d5f1b1724fd391
 https://www.booksellers.org.uk/BookSellers/media/Booksellers/Rethinking_Diversity_in_Publishing-Full-Report.pdf
+
+All of our images, such as our book spines, have been obtained from the internet. For those which we have had to improvise for, they have been made by ourselves on Canva.
