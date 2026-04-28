@@ -4,6 +4,7 @@ let selectedBook = null;
 let dropdownGenre, dropdownEthnicity;
 let bookTable;
 let bookImages = {};
+// array to store all of our book images because theres a lot
 let logoImg;
 
 let iconImages = [];
@@ -68,7 +69,7 @@ function setup() {
       x: width/2, 
       xOffset: random(-5, 5),
       genre: row.get("Genre"),
-      author: row.get("Author "),
+      author: row.get("Author "), //gap after author here is also intentional
       title: row.get("Title").trim(),
       ethnicity: row.get("Author Ethnicity"),
       rank: row.get("Rank"),
@@ -105,6 +106,7 @@ function draw() {
   drawDataExhibition();
 }
 
+//things for the dashboard in the top right
 function drawDataButtons() {
   let labels = ["NZ", "UK", "US", "All", "Summary"];
   let buttonCount = 5;
@@ -121,6 +123,7 @@ function drawDataButtons() {
   text("Find out more about our data!", width - 150, y - 70); 
   textStyle(NORMAL);
 
+// recognises when you hover over the buttons
   for (let i = 0; i < buttonCount; i++) {
     let x = startX + i * (size + padding);
 
@@ -180,6 +183,7 @@ function drawDataExhibition() {
   }
 }
 
+//trying to make the animation smooth when you apply a filter
 function restackBooks() {
   let visibleBooks = books.filter(b => b.visible);
   let booksPerStack = 18; //deciced to split the stack so that its not too visually overwhelming - v hard to focus on 150 books at once otherwise
@@ -237,7 +241,9 @@ function drawPopup() {
     rectMode(CENTER);
     rect(width / 2, height / 2, 400, 350, 20); 
     rectMode(CORNER);
-    
+
+    //24.04.2026 some of the book titles were a bit too long for the pop-up and weren't staying within the boundaries of the rectangle
+    //25.04.2026 this has now been fixed
     noStroke();
     fill(colours.bg);
     textAlign(CENTER, TOP);
@@ -250,7 +256,8 @@ function drawPopup() {
     textAlign(LEFT);
     let detailsX = width / 2 - 170;
     let startY = height / 2 - 30;
-    
+
+    //all the info that comes up when you click on a book 
     text("Author: " + selectedBook.author, detailsX, startY);
     text("Genre: " + selectedBook.genre, detailsX, startY + 25);
     text("Ethnicity: " + selectedBook.ethnicity, detailsX, startY + 50);
@@ -270,6 +277,8 @@ function drawPopup() {
 
 function drawStars(x, y, rating) {
   textSize(18);
+  //this is the fallback in case it can't recognise some of the numbers for the dating, however we have cleaned the data so this HOPEFULLY should not be an issue
+  // useful to have a fallback regardless
   if (isNaN(rating)) {
     fill(100);
     text("No rating", x, y);
@@ -335,6 +344,8 @@ function mousePressed() {
     selectedBook = null;
     return;
   }
+
+  // recognition for when the user clicks on one of the buttons
 
   let buttonCount = 5;
   let size = 55;
